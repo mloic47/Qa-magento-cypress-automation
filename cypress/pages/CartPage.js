@@ -9,6 +9,7 @@ class CartPage {
     // === Actions ===
 
     validateSubtotalMatchesItemSum() {
+        cy.wait(2000);
         cy.get(this.selectors.cartItemsPrices).then(($els) => {
             let sum = 0;
             $els.each((index, el) => {
