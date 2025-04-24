@@ -9,9 +9,10 @@ class SearchPage {
 
     searchFor(keyword) {
         cy.wait(1000)
-        cy.get(this.selectors.searchInput).clear()
         cy.get(this.selectors.searchInput).click()
-        cy.get(this.selectors.searchInput).should('be.visible').type(`${keyword}{enter}`)
+            .clear()
+            .should('be.visible')
+            .type(`${keyword}{enter}`)
 
     }
 
