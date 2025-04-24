@@ -13,6 +13,7 @@ class ProductPage {
         cy.get(this.selectors.productTitle).contains(productName).click();
         cy.contains(this.selectors.size).click();
         cy.get(this.selectors.color).click();
+        cy.wait(2000)
         cy.contains(this.selectors.addToCartButton).click();
 
         cy.wait(2000);
