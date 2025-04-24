@@ -8,18 +8,18 @@ class SearchPage {
     };
 
     searchFor(keyword) {
-        cy.get(this.selectors.searchInput)
-            .should('exist')
-            .should('not.be.disabled')
-            .clear()
-            .type(`${keyword}{enter}`,{delay:1000});
+        cy.wait(1000)
+        cy.get(this.selectors.searchInput).clear()
+        cy.get(this.selectors.searchInput).click()
+        cy.get(this.selectors.searchInput).should('be.visible').type(`${keyword}{enter}`)
+
     }
 
     validateSearchResults(expectedResults) {
-        cy.get(this.selectors.searchResults).should('exist');
+        cy.get(productPage.selectors.productTitle).should('exist');
 
         expectedResults.forEach(expected => {
-            cy.get(productPage.productTitle).should('contain.text', expected);
+            cy.get(productPage.selectors.productTitle).should('contain.text', expected);
         });
     }
 }
