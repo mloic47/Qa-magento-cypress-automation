@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "85d2bda8-144d-4381-be05-f4417c86e93c",
+		"name": "Petstore API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16247540",
+		"_collection_link": "https://techiteasygroup.postman.co/workspace/petstore~2b07ec9d-64c0-499f-9695-cc5c896b5833/collection/16247540-85d2bda8-144d-4381-be05-f4417c86e93c?action=share&source=collection_link&creator=16247540"
+	},
+	"item": [
+		{
+			"name": "POST /v2/pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Pet is added successfully\", function () {",
+							"    var responseJson = pm.response.json();",
+							"    var randomPetName = pm.environment.get(\"petName\"); // Retrieve the random pet name",
+							"",
+							"    // Assert that the pet name matches the randomly generated one",
+							"    pm.expect(responseJson.name).to.eql(randomPetName);",
+							"    pm.expect(responseJson.status).to.eql(\"available\");",
+							"",
+							"    // Save the petId for the GET request",
+							"    pm.environment.set(\"petId\", responseJson.id);",
+							"    console.log(\"PetId saved: \" + responseJson.id);  // Debug log for petId",
+							"});",
+							"",
+							"",
+							"pm.test(\"Pet is added successfully and has unique id\", function () {",
+							"    var responseJson = pm.response.json();",
+							"    ",
+							"    // Check if a petId is returned",
+							"    pm.expect(responseJson.id).to.be.a(\"number\");",
+							"    pm.environment.set(\"petId\", responseJson.id);  // Save the petId for later use",
+							"    ",
+							"    // Assert that the pet name is correct (this should be the random name)",
+							"    var randomPetName = pm.environment.get(\"petName\");",
+							"    pm.expect(responseJson.name).to.eql(randomPetName);",
+							"    ",
+							"    pm.expect(responseJson.status).to.eql(\"available\");",
+							"    ",
+							"    // Ensure the petId is unique by comparing it with the previous petId",
+							"    let previousPetId = pm.environment.get(\"previousPetId\");",
+							"    if (previousPetId) {",
+							"        pm.expect(responseJson.id).to.not.eql(previousPetId, \"PetId should be unique\");",
+							"    }",
+							"    pm.environment.set(\"previousPetId\", responseJson.id);  // Save the current petId as previous for next test",
+							"});",
+							"",
+							"",
+							"",
+							"pm.environment.set(\"petId\", pm.response.json().id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Function to generate a random name",
+							"function getRandomName() {",
+							"    const names = [\"Buddy\", \"Max\", \"Bella\", \"Charlie\", \"Luna\", \"Rocky\", \"Lucy\", \"Daisy\", \"Milo\", \"Coco\"];",
+							"    return names[Math.floor(Math.random() * names.length)];",
+							"}",
+							"",
+							"// Generate a random name and set it in the environment variable",
+							"let randomPetName = getRandomName();",
+							"pm.environment.set(\"petName\", randomPetName);",
+							"",
+							"// Set the random pet name in the request body",
+							"pm.request.body.raw = JSON.stringify({",
+							"    \"name\": randomPetName,",
+							"    \"status\": \"available\"",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 100001,\n    \"category\": {\n        \"id\": 1,\n        \"name\": \"Dogs\"\n    },\n    \"name\": \"Max\",\n    \"photoUrls\": [\"https://dogpic.com/dog1.jpg\"],\n    \"tags\": [\n        {\n            \"id\": 1,\n            \"name\": \"friendly\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /v2/pet/:petId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Test to check if response body has the required parameter",
+							"pm.test(\"Response body has the required parameter\", function () {",
+							"    const responseBody = pm.response.json();",
+							"    pm.expect(responseBody).to.have.property('id');",
+							"    pm.expect(responseBody).to.have.property('category');",
+							"    pm.expect(responseBody).to.have.property('name');",
+							"    pm.expect(responseBody).to.have.property('photoUrls');",
+							"    pm.expect(responseBody).to.have.property('tags');",
+							"    pm.expect(responseBody).to.have.property('status');",
+							"});",
+							"",
+							"// Test for response body properties",
+							"pm.test(\"Response body has the required properties\", function () {",
+							"    const responseBody = pm.response.json();",
+							"    pm.expect(responseBody).to.have.property('id');",
+							"    pm.expect(responseBody).to.have.property('category');",
+							"    pm.expect(responseBody).to.have.property('name');",
+							"    pm.expect(responseBody).to.have.property('photoUrls');",
+							"    pm.expect(responseBody).to.have.property('tags');",
+							"    pm.expect(responseBody).to.have.property('status');",
+							"});",
+							"",
+							"",
+							"",
+							"// Test for response headers",
+							"pm.test(\"Response has the correct content type\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/{{petId}}",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"{{petId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

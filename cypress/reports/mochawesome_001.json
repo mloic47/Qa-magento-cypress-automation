@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-24T14:37:58.685Z",
+    "end": "2025-04-24T14:38:25.873Z",
+    "duration": 27188,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "259629f5-e459-42b4-95a7-3bf487e982ba",
+      "title": "",
+      "fullFile": "cypress/e2e/registration.cy.js",
+      "file": "cypress/e2e/registration.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "96f82e06-8036-4adb-9046-df73a2180fd6",
+          "title": "Registration Flow with Login Validation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should register a user and validate login",
+              "fullTitle": "Registration Flow with Login Validation should register a user and validate login",
+              "timedOut": null,
+              "duration": 27100,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const user = Cypress.env('validUser');\ncy.visit(_routes.ROUTES.REGISTER);\nregistrationPage.register(user);\ncy.visit(_routes.ROUTES.LOGIN);\nloginPage.login(user);\ncy.url().should('include', _routes.ROUTES.ACCOUNT_DASHBOARD);\ncy.contains(`${user.firstName} ${user.lastName}`);",
+              "err": {},
+              "uuid": "50bda7e5-482a-43eb-9570-c2778a78b996",
+              "parentUUID": "96f82e06-8036-4adb-9046-df73a2180fd6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "50bda7e5-482a-43eb-9570-c2778a78b996"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 27100,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

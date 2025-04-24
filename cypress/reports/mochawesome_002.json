@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-24T14:38:28.851Z",
+    "end": "2025-04-24T14:38:41.978Z",
+    "duration": 13127,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eab8db5f-1904-4147-82f7-459964558968",
+      "title": "",
+      "fullFile": "cypress/e2e/searchProducts.cy.js",
+      "file": "cypress/e2e/searchProducts.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d65a1ce4-526f-41fb-92f6-6e215f4959b4",
+          "title": "Search and Validate Results",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should search for products and validate expected results",
+              "fullTitle": "Search and Validate Results should search for products and validate expected results",
+              "timedOut": null,
+              "duration": 12394,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/');\ncy.fixture('searchData').then(data => {\n  const {\n    searchKeyword,\n    expectedResults\n  } = data;\n  searchPage.searchFor(searchKeyword);\n  searchPage.validateSearchResults(searchKeyword);\n});",
+              "err": {
+                "message": "CypressError: `cy.type()` failed because it requires a valid typeable element.\n\nThe element typed into was:\n\n  > `<form class=\"form minisearch active\" id=\"search_mini_form\" action=\"https://magento.softwaretestingboard.com/catalogsearch/result/\" method=\"get\">...</form>`\n\n  A typeable element matches one of the following selectors:\n  `a[href]`\n  `area[href]`\n  `input`\n  `select`\n  `textarea`\n  `button`\n  `iframe`\n  `[tabindex]`\n  `[contenteditable]`\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` failed because it requires a valid typeable element.\n\nThe element typed into was:\n\n  > `<form class=\"form minisearch active\" id=\"search_mini_form\" action=\"https://magento.softwaretestingboard.com/catalogsearch/result/\" method=\"get\">...</form>`\n\n  A typeable element matches one of the following selectors:\n  `a[href]`\n  `area[href]`\n  `input`\n  `select`\n  `textarea`\n  `button`\n  `iframe`\n  `[tabindex]`\n  `[contenteditable]`\n\nhttps://on.cypress.io/type\n    at <unknown> (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:115817:76)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1671:18)\n    at _drainQueueStep (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at SearchPage.searchFor (webpack:///./cypress/pages/SearchPage.js:13:13)\n    at Context.eval (webpack:///./cypress/e2e/searchProducts.cy.js:14:23)\n    at getRet (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119616:20)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119627:66)\n    at Context.then (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119878:21)\n    at wrapped (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:140155:19)",
+                "diff": null
+              },
+              "uuid": "0ff1291e-2fdd-4bed-9948-96f85282dda1",
+              "parentUUID": "d65a1ce4-526f-41fb-92f6-6e215f4959b4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0ff1291e-2fdd-4bed-9948-96f85282dda1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12394,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

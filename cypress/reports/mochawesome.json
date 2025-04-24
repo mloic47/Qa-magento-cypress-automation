@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-24T14:36:54.450Z",
+    "end": "2025-04-24T14:37:55.434Z",
+    "duration": 60984,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a24df4e2-7b04-4a32-bce4-a678061c1f9c",
+      "title": "",
+      "fullFile": "cypress/e2e/orderProcess.cy.js",
+      "file": "cypress/e2e/orderProcess.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6ee6ea64-546a-42b7-ae90-f442a464a6a8",
+          "title": "Place Order with Multiple Products",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add multiple products to the cart and validate price",
+              "fullTitle": "Place Order with Multiple Products should add multiple products to the cart and validate price",
+              "timedOut": null,
+              "duration": 60577,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('products').then(productData => {\n  const productNames = productData.orderProducts;\n  // Add products to the cart\n  productNames.forEach(product => {\n    cy.visit('/'); // Navigate to homepage\n    productPage.addProductToCart(product);\n  });\n  // Open the cart and validate total price\n  productPage.openCart();\n  cartPage.validateSubtotalMatchesItemSum();\n});",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n    at timedOutWaitingForPageLoad (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:132731:64)\n    at <unknown> (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:133725:16)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:4156:41)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at eval (webpack:///./cypress/e2e/orderProcess.cy.js:17:19)\nat Array.forEach (<anonymous>)\n    at Context.eval (webpack:///./cypress/e2e/orderProcess.cy.js:16:25)\n    at getRet (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119616:20)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119627:66)\n    at Context.then (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:119878:21)\n    at wrapped (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:140155:19)",
+                "diff": null
+              },
+              "uuid": "382fe7f7-333b-4c0a-8c1e-4d0ce2b5c92c",
+              "parentUUID": "6ee6ea64-546a-42b7-ae90-f442a464a6a8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "382fe7f7-333b-4c0a-8c1e-4d0ce2b5c92c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60577,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
