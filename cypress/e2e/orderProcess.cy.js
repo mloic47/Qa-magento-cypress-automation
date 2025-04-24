@@ -4,9 +4,15 @@ import CheckoutPage from '../pages/CheckoutPage';
 import { ROUTES } from '../constants/routes';
 
 describe('Place Order with Multiple Products', () => {
+
     const productPage = new ProductPage();
     const cartPage = new CartPage();
     const checkoutPage = new CheckoutPage();
+
+    beforeEach(() => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+    });
 
     it('should add multiple products to the cart and validate price', () => {
         cy.fixture('products').then((productData) => {

@@ -6,7 +6,6 @@ class ProductPage {
         cartIcon: '.minicart-wrapper',
         size: "S",
         color: "#option-label-color-93-item-57",
-        cartPage:"View and Edit Cart"
     };
 
     // === Actions ===
@@ -22,8 +21,6 @@ class ProductPage {
 
     openCart() {
         cy.get(this.selectors.cartIcon).click();
-        cy.wait(2000);
-        cy.contains(this.selectors.cartPage).click({ force: true });
         cy.wait(2000);
 
     }
