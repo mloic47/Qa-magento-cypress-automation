@@ -20,7 +20,7 @@ class ProductPage {
     }
 
     openCart() {
-        cy.get(this.selectors.cartIcon).click();
+        cy.get(this.selectors.cartIcon).click({force: true});
         cy.wait(2000);
 
     }
