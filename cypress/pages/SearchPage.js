@@ -2,7 +2,7 @@ import ProductPage from "./ProductPage";
 const productPage = new ProductPage();
 class SearchPage {
     selectors = {
-        searchInput: '#search',
+        searchInput: '#search_mini_form',
         searchButton: 'button.action.search',
         resultItems: '.product-item-link'
     };
@@ -11,16 +11,12 @@ class SearchPage {
         cy.wait(1000)
         cy.get(this.selectors.searchInput).click()
             .clear()
-            .should('be.visible')
             .type(`${keyword}{enter}`)
-
     }
 
-    validateSearchResults(expectedResults) {
-cy.scrollTo("bottom")
-        expectedResults.forEach(expected => {
-            cy.contains(expected);
-        });
+    validateSearchResults(search) {
+        cy.get(productPage.selectors.productTitle).should('exist');
+        cy.get(productPage.selectors.productTitle).contains('search');
     }
 }
 

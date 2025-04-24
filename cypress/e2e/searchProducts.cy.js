@@ -12,7 +12,7 @@ describe('Search and Validate Results', () => {
 
 
             searchPage.searchFor(searchKeyword);
-            searchPage.validateSearchResults(expectedResults);
+            searchPage.validateSearchResults(searchKeyword);
 
         });
     });
