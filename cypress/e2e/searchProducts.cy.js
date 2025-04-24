@@ -9,8 +9,11 @@ describe('Search and Validate Results', () => {
         cy.fixture('searchData').then(data => {
             const { searchKeyword, expectedResults } = data;
 
+
+
             searchPage.searchFor(searchKeyword);
             searchPage.validateSearchResults(expectedResults);
+
         });
     });
 });

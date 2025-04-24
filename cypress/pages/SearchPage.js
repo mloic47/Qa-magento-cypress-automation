@@ -1,3 +1,5 @@
+import ProductPage from "./ProductPage";
+const productPage = new ProductPage();
 class SearchPage {
     selectors = {
         searchInput: '#search',
@@ -10,23 +12,16 @@ class SearchPage {
             .should('exist')
             .should('not.be.disabled')
             .clear()
-            .type(`${keyword}{enter}`);
+            .type(`${keyword}{enter}`,{delay:1000});
     }
 
     validateSearchResults(expectedResults) {
-        cy.get(this.selectors.searchResults)
-            .should('exist')
-            .then(($links) => {
-                const texts = [...$links].map(el => el.innerText.toLowerCase());
-                expectedResults.forEach(expected => {
-                    expect(
-                        texts.some(text => text.includes(expected.toLowerCase())),
-                        `Expected to find result containing "${expected}"`
-                    ).to.be.true;
-                });
-            });
-    }
+        cy.get(this.selectors.searchResults).should('exist');
 
+        expectedResults.forEach(expected => {
+            cy.get(productPage.productTitle).should('contain.text', expected);
+        });
+    }
 }
 
 export default SearchPage;
