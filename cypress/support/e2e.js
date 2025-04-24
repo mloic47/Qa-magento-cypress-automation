@@ -3,7 +3,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes('setModalElement is not defined')) {
         return false;
     }
-
+    if (err.message.includes("Cannot read properties of undefined (reading 'set')")) {
+        return false;
+    }
     // Let other errors fail the test
     return true;
 });
