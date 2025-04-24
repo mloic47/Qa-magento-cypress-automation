@@ -2,7 +2,7 @@ import ProductPage from "./ProductPage";
 const productPage = new ProductPage();
 class SearchPage {
     selectors = {
-        searchInput: '#search_mini_form',
+        searchInput: '#search',
         searchButton: 'button.action.search',
         resultItems: '.product-item-link'
     };
