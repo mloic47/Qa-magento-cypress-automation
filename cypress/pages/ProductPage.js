@@ -4,7 +4,7 @@ class ProductPage {
         productTitle: '.product-item-link',  // Assuming we want the title of the product
         addToCartButton: 'Add to Cart',  // Adjust selector as necessary
         cartIcon: '.minicart-wrapper',
-        size: "XS",
+        size: "S",
         color: "#option-label-color-93-item-57"
     };
 

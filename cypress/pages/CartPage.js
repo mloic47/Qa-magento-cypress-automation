@@ -3,17 +3,11 @@ class CartPage {
     selectors = {
         cartItemsPrices: '.minicart-price', // Cart items prices
         cartTotal: '.price',
-        proceedToCheckoutButton: '.action.checkout', // Proceed to checkout button
+        proceedToCheckoutButton: 'Proceed to Checkout', // Proceed to checkout button
     };
 
     // === Actions ===
-    getItemPrices() {
-        const prices = [];
-        cy.get(this.selectors.itemPrices).each(($el) => {
-            const priceText = $el.text().replace('$', '');
-            prices.push(parseFloat(priceText));
-        }).then(() => prices);
-    }
+
     validateSubtotalMatchesItemSum() {
         cy.get(this.selectors.cartItemsPrices).then(($els) => {
             let sum = 0;
@@ -28,12 +22,10 @@ class CartPage {
             });
         });
     }
-    validateCartTotal(expectedTotal) {
-        cy.get(this.selectors.cartTotal).should('contain', expectedTotal);
-    }
+
 
     proceedToCheckout() {
-        cy.get(this.selectors.proceedToCheckoutButton).click();
+        cy.contains(this.selectors.proceedToCheckoutButton).click();
     }
 }
 

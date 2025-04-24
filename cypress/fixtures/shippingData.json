@@ -1,0 +1,9 @@
+{
+  "validShipping": {
+    "street": "123 Test Street",
+    "city": "Yaounde",
+    "region": "Centre",
+    "postcode": "237",
+    "telephone": "690000000"
+  }
+}
