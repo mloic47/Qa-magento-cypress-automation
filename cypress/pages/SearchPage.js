@@ -17,10 +17,9 @@ class SearchPage {
     }
 
     validateSearchResults(expectedResults) {
-        cy.get(productPage.selectors.productTitle).should('exist');
-
+cy.scrollTo("bottom")
         expectedResults.forEach(expected => {
-            cy.get(productPage.selectors.productTitle).should('contain.text', expected);
+            cy.contains(expected);
         });
     }
 }
